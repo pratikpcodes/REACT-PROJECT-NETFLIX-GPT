@@ -1,9 +1,14 @@
 import React from 'react'
-
+import Browse from './Browse'
+import Login from './Login'
 const Body = () => {
   return (
-    <div className='underline text-blue-400 '>Body</div>
-  )
+    <div>
+      <Login/>
+  <Browse/>
+    </div>
+  
+    )
 }
 
 export default Body
