@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 const Login = () => {
+  const [isSignIn, setIsSignIn] = useState(true);
+  const toggleSignInForm = () => {
+    setIsSignIn(!isSignIn);
+  };
   return (
     <>
       <Header />
@@ -12,17 +16,34 @@ const Login = () => {
       </div>
       <div class=" flex relative justify-center items-center min-h-screen">
         <div class="max-w-md w-full px-16 py-8 bg-black bg-opacity-60 rounded-lg">
-          <h1 class="text-3xl font-bold mt-10 mb-6   text-white">Sign In</h1>
+          <h1 class="text-3xl font-bold mt-10 mb-6   text-white">
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </h1>
           <form>
+            {!isSignIn &&(
+        
+              <div class="mb-6">
+                <label class="block text-white text-sm font-bold mb-2">
+                  Name
+                </label>
+                <input
+                  class="appearance-none border rounded w-full py-4 px-6 text-white leading-tight "
+                  id="Name"
+                  type="Name"
+                  placeholder="Enter Name"
+                />
+              </div>
+              
+            )}
             <div class="mb-4 ">
               <label class="block text-white text-sm font-bold mb-2">
                 Email
               </label>
               <input
-                class="rounded w-full mx-auto py-4 px-6 text-gray-700  "
+                placeholder="youremail@example.com"
+                class="rounded w-full  mx-auto py-4 px-6  text-gray-700 "
                 id="email"
                 type="email"
-                placeholder="youremail@example.com"
               />
             </div>
             <div class="mb-6">
@@ -41,7 +62,7 @@ const Login = () => {
                 class="bg-red-700 hover:bg-red-950 text-white font-bold py-4 px-8 rounded w-full"
                 type="submit"
               >
-                Sign In
+                {isSignIn ? "Sign In" : "Sign Up"}
               </button>
             </div>
             <div class="justify-between flex mt-6">
@@ -57,13 +78,15 @@ const Login = () => {
             </div>
             <div class="justify-between flex mt-10 pb-12">
               <div>
-                <a class="text-white text-sm" href="#">
-                  New to Netflix? Sign Up Now
-                </a>
+                <p onClick={toggleSignInForm} class="text-white text-sm">
+                  {isSignIn
+                    ? "New to Netflix? Sign Up Now"
+                    : "Already a User? Sign In"}
+                </p>
               </div>
             </div>
             <div class="text-white opacity-70 mb-20">
-            Support Piracy?Give your address
+              Support Piracy?Give your address
             </div>
           </form>
         </div>
